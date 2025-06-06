@@ -1,4 +1,5 @@
-# Pi Calculus MQTT .NET Template
+# PiCalc.NET
+##.NET Template for Pi Calculus over MQTT
 
 See [the docs](https://PiCalc.net)
 
