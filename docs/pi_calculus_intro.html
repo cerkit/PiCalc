@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Introduction to Pi Calculus</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; line-height: 1.6; }
+    code, pre { background-color: #f8f8f8; padding: 0.5em; border: 1px solid #ccc; border-radius: 4px; display: block; }
+  </style>
+</head>
+<body>
+<h1>Introduction to Pi Calculus</h1>
+
+<p>The Pi Calculus is a formal model of concurrent computation developed by Robin Milner. It provides a way to describe processes that can interact, change structure, and evolve over time. Pi Calculus is particularly useful for modeling systems with dynamic communication patterns.</p>
+
+<h2>Core Concepts</h2>
+<ul>
+  <li><strong>Processes:</strong> Fundamental units of execution</li>
+  <li><strong>Channels:</strong> Named communication pathways</li>
+  <li><strong>Message passing:</strong> Processes send and receive data over channels</li>
+  <li><strong>Channel mobility:</strong> Channels can be transmitted as messages</li>
+  <li><strong>Dynamic topology:</strong> Communication structure can change at runtime</li>
+</ul>
+
+<h2>Notation and Examples</h2>
+
+<h3>Basic Communication</h3>
+<pre><code>a(x).P      // Receive x on channel a, then behave like P
+a⟨b⟩.Q      // Send b on channel a, then behave like Q
+</code></pre>
+<p><strong>Example Interaction:</strong></p>
+<pre><code>a(x).P | a⟨b⟩.Q</code></pre>
+<p>This represents two processes in parallel: one is waiting to receive a message on <code>a</code>, the other sends <code>b</code> on <code>a</code>. After communication, <code>x</code> is bound to <code>b</code> in process <code>P</code>.</p>
+
+<h3>New Channel Creation</h3>
+<pre><code>ν c.P      // Create a new private channel c, scoped to P</code></pre>
+
+<h3>Channel Mobility</h3>
+<pre><code>ν b ( a⟨b⟩ | a(x).x⟨"hello"⟩ )</code></pre>
+<p>This means:</p>
+<ol>
+  <li>Create a new channel <code>b</code></li>
+  <li>Send it over channel <code>a</code></li>
+  <li>Another process receives the channel as <code>x</code>, and uses it to send a message</li>
+</ol>
+
+<h3>Process Replication</h3>
+<pre><code>!P         // Infinite copies of P (replication)</code></pre>
+<p>Typically used to model servers or handlers that process unbounded requests.</p>
+
+<h3>Guarded Choice</h3>
+<pre><code>a(x).P + b(y).Q</code></pre>
+<p>The process waits to receive on either <code>a</code> or <code>b</code>, whichever happens first.</p>
+
+<h2>Relevance to Software</h2>
+<p>Pi Calculus concepts map naturally to modern distributed systems. Processes map to services or microservices, channels to message queues or topics, and mobility enables dynamic composition of workflows. This project simulates these behaviors using MQTT as a message transport layer in a .NET 8 environment.</p>
+
+</body>
+</html>

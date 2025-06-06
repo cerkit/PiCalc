@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>README - Pi Calculus-Inspired MQTT System</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; line-height: 1.6; }
+    code, pre { background-color: #f4f4f4; padding: 0.3em; border-radius: 3px; }
+    pre { padding: 1em; overflow-x: auto; }
+    h1, h2, h3 { color: #333; }
+  </style>
+</head>
+<body>
+  <h1>Pi Calculus-Inspired MQTT System (.NET Console Template)</h1>
+
+  <p>This project simulates core concepts from the Pi Calculus—such as dynamic process communication, channel mobility, and message-driven behavior—using MQTT in a .NET 7 console application.</p>
+
+<div>
+  <img src="./images/PiCalculusSequenceDiagram.png" alt="Pi Calculus Sequence Diagram" />
+</div>
+
+  <h2>📦 Project Structure</h2>
+  <ul>
+    <li><code>Program.cs</code> – Entry point and orchestration</li>
+    <li><code>MqttRuntime.cs</code> – MQTT client setup, publish/subscribe logic</li>
+    <li><code>MqttPiProcess.cs</code> – Represents a reactive MQTT process</li>
+    <li><code>PiMessage.cs</code> – JSON message structure with metadata</li>
+    <li><code>*.csproj</code> – Project file with MQTTnet dependency</li>
+  </ul>
+
+  <h2>🧰 Prerequisites</h2>
+  <ul>
+    <li><a href="https://dotnet.microsoft.com/en-us/download">.NET 7 SDK</a></li>
+    <li>MQTT broker (e.g., Mosquitto running locally or remotely)</li>
+    <li>MQTTnet library is included via NuGet</li>
+  </ul>
+
+  <h2>🚀 How to Use</h2>
+
+  <h3>Install the Template Locally</h3>
+  <pre><code>dotnet new -i ./PiCalculusMqttTemplate</code></pre>
+
+  <h3>Create a New Project</h3>
+  <pre><code>dotnet new pi-mqtt -n MyPiApp
+cd MyPiApp
+dotnet run</code></pre>
+
+  <h2>🧪 Example Behavior</h2>
+  <ol>
+    <li>Subscribes to the <code>channel/discover</code> topic.</li>
+    <li>Waits for a <code>channel_offer</code> JSON message.</li>
+    <li>Dynamically subscribes to the offered topic (channel).</li>
+    <li>Handles any <code>message</code> type payloads published to that topic.</li>
+  </ol>
+
+  <h2>💬 Message Format</h2>
+  <pre><code>{
+  "type": "channel_offer" | "message",
+  "channel": "channel/topic/name",
+  "payload": "...",
+  "meta": {
+    "correlationId": "guid",
+    "timestamp": "ISO 8601"
+  }
+}</code></pre>
+
+  <h2>📚 Concepts Covered</h2>
+  <ul>
+    <li>Channel mobility via topic discovery</li>
+    <li>Dynamic topic subscription</li>
+    <li>Structured messaging via JSON</li>
+    <li>Pi Calculus modeling in C#</li>
+  </ul>
+
+  <h2>📜 License</h2>
+  <p>MIT License – Use freely for educational or commercial purposes.</p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Practical C# Implementation</title></head>
+<body>
+<h1>Practical Implementation in C# (.NET 8)</h1>
+<p>This implementation uses MQTT and C# to model Pi Calculus features:</p>
+<ul>
+  <li><strong>MQTTRuntime:</strong> Manages publish/subscribe communication</li>
+  <li><strong>PiMessage:</strong> JSON-formatted message including metadata</li>
+  <li><strong>MqttPiProcess:</strong> Represents a process subscribing to a topic</li>
+</ul>
+<h2>Channel Offer Example</h2>
+<pre><code>{
+  "type": "channel_offer",
+  "channel": "channel/dynamic/123",
+  "payload": null,
+  "meta": {
+    "correlationId": "guid",
+    "timestamp": "2025-06-05T12:00:00Z"
+  }
+}</code></pre>
+<p>This message allows a subscriber to dynamically subscribe to <code>channel/dynamic/123</code>.</p>
+</body>
+</html>
