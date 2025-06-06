@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Practical C# Implementation</title>
+  <title>Channel Mobility Sequence Diagram</title>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
   <style>
     body {
@@ -75,22 +75,27 @@
 </div>
 <div id="content">
 
-<h1>Practical Implementation in C# (.NET 8)</h1>
-<p>This implementation uses MQTT and C# to model Pi Calculus features:</p>
-<ul>
-  <li><strong>MQTTRuntime:</strong> Manages publish/subscribe communication</li>
-  <li><strong>PiMessage:</strong> JSON-formatted message including metadata</li>
-  <li><strong>MqttPiProcess:</strong> Represents a process subscribing to a topic</li>
-</ul>
-<h2>Channel Offer Example</h2>
-<pre><code>{
-  "type": "channel_offer",
-  "channel": "channel/dynamic/123",
-  "payload": null,
-  "meta": {
-    "correlationId": "guid",
-    "timestamp": "2025-06-05T12:00:00Z"
-  }
-}</code></pre>
-<p>This message allows a subscriber to dynamically subscribe to <code>channel/dynamic/123</code>.</p>
+<h1>Sequence Diagram – Channel Mobility</h1>
+<p>This sequence diagram illustrates how a channel is offered and dynamically used in a Pi Calculus-inspired MQTT system:</p>
+
+<pre><code>@startuml PiCalculus_Channel_Mobility
+actor Process1 as P1
+actor Process2 as P2
+participant "Channel a" as A
+participant "Channel b" as B
+
+== Channel Creation ==
+P1 -> A : send channel b (a⟨b⟩)
+P2 -> A : receive channel x (a(x))
+
+== Channel Mobility ==
+note right of A
+Channel b is sent over a\nand received by P2 as x
+end note
+
+P2 -> B : send "hello" (x⟨"hello"⟩)
+@enduml</code></pre>
+
+<p>This PlantUML diagram models the expression: <code>ν b ( a⟨b⟩ | a(x).x⟨"hello"⟩ )</code></p>
+<p>It demonstrates dynamic topic subscription and structured messaging behavior.</p>
 </div></body></html>

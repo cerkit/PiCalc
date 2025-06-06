@@ -1,8 +1,80 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Summary</title></head>
+<head>
+  <meta charset="UTF-8">
+  <title>Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Atkinson Hyperlegible', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #800080, #ff0000);
+      color: #fff;
+    }
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1em;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+    #sidebar h3 {
+      font-size: 1.2em;
+    }
+    #sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #sidebar ul li {
+      margin: 0.5em 0;
+    }
+    #sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #sidebar ul li a:hover {
+      text-decoration: underline;
+    }
+    #content {
+      margin-left: 250px;
+      padding: 2em;
+    }
+    pre, code {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.5em;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      white-space: pre-wrap;
+      color: #fff;
+    }
+    h1, h2, h3 {
+      color: #fff;
+    }
+    a {
+      color: #ffccff;
+    }
+  </style>
+</head>
 <body>
+<div id="sidebar">
+  <h3>📘 Contents</h3>
+  <ul>
+    <li><a href="index.html">📗 Introduction</a></li>
+    <li><a href="practical_implementation.html">💻 Implementation</a></li>
+    <li><a href="sequence_diagram.html">📈 Sequence Diagram</a></li>
+    <li><a href="summary.html">🧾 Summary</a></li>
+    <li><a href="README_PiCalculusMqttTemplate.html">📄 README</a></li>
+  </ul>
+</div>
+<div id="content">
+
 <h1>Summary</h1>
 <p>This project demonstrates how principles from the Pi Calculus can be practically applied in modern distributed systems using .NET 8 and MQTT:</p>
 <ul>
@@ -11,6 +83,4 @@
   <li>Structured message handling with JSON</li>
   <li>Reactive design using process-like abstractions</li>
 </ul>
-<p>This design enables flexible, scalable, and mathematically grounded concurrent systems.</p>
-</body>
-</html>
+</div></body></html>

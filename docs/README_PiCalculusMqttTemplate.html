@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Practical C# Implementation</title>
+  <title>README</title>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
   <style>
     body {
@@ -75,22 +75,35 @@
 </div>
 <div id="content">
 
-<h1>Practical Implementation in C# (.NET 8)</h1>
-<p>This implementation uses MQTT and C# to model Pi Calculus features:</p>
+<h1>Pi Calculus-Inspired MQTT System (.NET Console Template)</h1>
+<p>This project simulates core concepts from the Pi Calculus—such as dynamic process communication, channel mobility, and message-driven behavior—using MQTT in a .NET 8 console application.</p>
+<h2>📦 Project Structure</h2>
 <ul>
-  <li><strong>MQTTRuntime:</strong> Manages publish/subscribe communication</li>
-  <li><strong>PiMessage:</strong> JSON-formatted message including metadata</li>
-  <li><strong>MqttPiProcess:</strong> Represents a process subscribing to a topic</li>
+  <li><code>Program.cs</code> – Entry point and orchestration</li>
+  <li><code>MqttRuntime.cs</code> – MQTT client setup, publish/subscribe logic</li>
+  <li><code>MqttPiProcess.cs</code> – Represents a reactive MQTT process</li>
+  <li><code>PiMessage.cs</code> – JSON message structure with metadata</li>
+  <li><code>*.csproj</code> – Project file with MQTTnet dependency</li>
 </ul>
-<h2>Channel Offer Example</h2>
+<h2>🧰 Prerequisites</h2>
+<ul>
+  <li><a href="https://dotnet.microsoft.com/en-us/download">.NET 8 SDK</a></li>
+  <li>MQTT broker (e.g., Mosquitto running locally or remotely)</li>
+  <li>MQTTnet library is included via NuGet</li>
+</ul>
+<h2>🚀 How to Use</h2>
+<pre><code>dotnet new -i ./PiCalculusMqttTemplate
+dotnet new pi-mqtt -n MyPiApp
+cd MyPiApp
+dotnet run</code></pre>
+<h2>💬 Message Format</h2>
 <pre><code>{
-  "type": "channel_offer",
-  "channel": "channel/dynamic/123",
-  "payload": null,
+  "type": "channel_offer" | "message",
+  "channel": "channel/topic/name",
+  "payload": "...",
   "meta": {
     "correlationId": "guid",
-    "timestamp": "2025-06-05T12:00:00Z"
+    "timestamp": "ISO 8601"
   }
 }</code></pre>
-<p>This message allows a subscriber to dynamically subscribe to <code>channel/dynamic/123</code>.</p>
 </div></body></html>

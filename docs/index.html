@@ -1,74 +1,98 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>README - Pi Calculus-Inspired MQTT System</title>
+  <title>Introduction to Pi Calculus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; line-height: 1.6; }
-    code, pre { background-color: #f4f4f4; padding: 0.3em; border-radius: 3px; }
-    pre { padding: 1em; overflow-x: auto; }
-    h1, h2, h3 { color: #333; }
+    body {
+      font-family: 'Atkinson Hyperlegible', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #800080, #ff0000);
+      color: #fff;
+    }
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1em;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+    #sidebar h3 {
+      font-size: 1.2em;
+    }
+    #sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #sidebar ul li {
+      margin: 0.5em 0;
+    }
+    #sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #sidebar ul li a:hover {
+      text-decoration: underline;
+    }
+    #content {
+      margin-left: 250px;
+      padding: 2em;
+    }
+    pre, code {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.5em;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      white-space: pre-wrap;
+      color: #fff;
+    }
+    h1, h2, h3 {
+      color: #fff;
+    }
+    a {
+      color: #ffccff;
+    }
   </style>
 </head>
 <body>
-  <h1>Pi Calculus-Inspired MQTT System (.NET Console Template)</h1>
-
-  <p>This project simulates core concepts from the Pi Calculus—such as dynamic process communication, channel mobility, and message-driven behavior—using MQTT in a .NET 8 console application.</p>
-
-  <h2>📦 Project Structure</h2>
+<div id="sidebar">
+  <h3>📘 Contents</h3>
   <ul>
-    <li><code>Program.cs</code> – Entry point and orchestration</li>
-    <li><code>MqttRuntime.cs</code> – MQTT client setup, publish/subscribe logic</li>
-    <li><code>MqttPiProcess.cs</code> – Represents a reactive MQTT process</li>
-    <li><code>PiMessage.cs</code> – JSON message structure with metadata</li>
-    <li><code>*.csproj</code> – Project file with MQTTnet dependency</li>
+    <li><a href="index.html">📗 Introduction</a></li>
+    <li><a href="practical_implementation.html">💻 Implementation</a></li>
+    <li><a href="sequence_diagram.html">📈 Sequence Diagram</a></li>
+    <li><a href="summary.html">🧾 Summary</a></li>
+    <li><a href="README_PiCalculusMqttTemplate.html">📄 README</a></li>
   </ul>
+</div>
+<div id="content">
 
-  <h2>🧰 Prerequisites</h2>
-  <ul>
-    <li><a href="https://dotnet.microsoft.com/en-us/download">.NET 8 SDK</a></li>
-    <li>MQTT broker (e.g., Mosquitto running locally or remotely)</li>
-    <li>MQTTnet library is included via NuGet</li>
-  </ul>
-
-  <h2>🚀 How to Use</h2>
-
-  <h3>Install the Template Locally</h3>
-  <pre><code>dotnet new -i ./PiCalculusMqttTemplate</code></pre>
-
-  <h3>Create a New Project</h3>
-  <pre><code>dotnet new pi-mqtt -n MyPiApp
-cd MyPiApp
-dotnet run</code></pre>
-
-  <h2>🧪 Example Behavior</h2>
-  <ol>
-    <li>Subscribes to the <code>channel/discover</code> topic.</li>
-    <li>Waits for a <code>channel_offer</code> JSON message.</li>
-    <li>Dynamically subscribes to the offered topic (channel).</li>
-    <li>Handles any <code>message</code> type payloads published to that topic.</li>
-  </ol>
-
-  <h2>💬 Message Format</h2>
-  <pre><code>{
-  "type": "channel_offer" | "message",
-  "channel": "channel/topic/name",
-  "payload": "...",
-  "meta": {
-    "correlationId": "guid",
-    "timestamp": "ISO 8601"
-  }
-}</code></pre>
-
-  <h2>📚 Concepts Covered</h2>
-  <ul>
-    <li>Channel mobility via topic discovery</li>
-    <li>Dynamic topic subscription</li>
-    <li>Structured messaging via JSON</li>
-    <li>Pi Calculus modeling in C#</li>
-  </ul>
-
-  <h2>📜 License</h2>
-  <p>MIT License – Use freely for educational or commercial purposes.</p>
-</body>
-</html>
+<h1>Introduction to Pi Calculus</h1>
+<p>The Pi Calculus is a formal model of concurrent computation developed by Robin Milner. It provides a way to describe processes that can interact, change structure, and evolve over time. Pi Calculus is particularly useful for modeling systems with dynamic communication patterns.</p>
+<h2>Core Concepts</h2>
+<ul>
+  <li><strong>Processes:</strong> Fundamental units of execution</li>
+  <li><strong>Channels:</strong> Named communication pathways</li>
+  <li><strong>Message passing:</strong> Processes send and receive data over channels</li>
+  <li><strong>Channel mobility:</strong> Channels can be transmitted as messages</li>
+  <li><strong>Dynamic topology:</strong> Communication structure can change at runtime</li>
+</ul>
+<h2>Notation and Examples</h2>
+<pre><code>a(x).P    // Receive x on channel a, then behave like P
+a⟨b⟩.Q    // Send b on channel a, then behave like Q
+a(x).P | a⟨b⟩.Q  // Parallel communication: P gets b via a</code></pre>
+<h3>Channel Mobility</h3>
+<pre><code>ν b ( a⟨b⟩ | a(x).x⟨"hello"⟩ )</code></pre>
+<p>This example creates a private channel b, sends it over channel a, and then sends a message on that received channel.</p>
+<h3>Replication and Choice</h3>
+<pre><code>!P        // Infinite replication of process P
+a(x).P + b(y).Q  // Guarded choice</code></pre>
+</div></body></html>
