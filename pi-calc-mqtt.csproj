@@ -8,4 +8,19 @@
   <ItemGroup>
     <PackageReference Include="MQTTnet" Version="4.1.0" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include=".github\workflows\nuget-release.yml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PackageId>PiCalc</PackageId>
+    <!-- unique across NuGet -->
+    <Version>1.0.0</Version>
+    <!-- will be overwritten by the workflow -->
+    <Authors>cerkit</Authors>
+    <Company>cerkit</Company>
+    <PackageDescription>Reactive Pi-calculus tooling…</PackageDescription>
+    <RepositoryUrl>https://github.com/cerkit/PiCalc</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
 </Project>

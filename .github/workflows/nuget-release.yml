@@ -1,0 +1,57 @@
+﻿name: Build & NuGet release
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest           # windows-latest if you need full .NET Framework; else ubuntu-latest
+    env:
+      CONFIGURATION: Release
+      ARTIFACT_DIR: ${{ github.workspace }}/artifacts
+
+    steps:
+    - uses: actions/checkout@v4                       # 1️⃣ check out code
+
+    - uses: actions/setup-dotnet@v4                   # 2️⃣ install SDK
+      with:
+        dotnet-version: '8.0.x'                       # pin or read from global.json
+                                                     # :contentReference[oaicite:0]{index=0}
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore
+
+    - name: Test                                           # optional
+      run: dotnet test --configuration ${{ env.CONFIGURATION }} --no-build --verbosity normal
+
+    - name: Pack
+      run: >
+        dotnet pack
+        --configuration ${{ env.CONFIGURATION }}
+        --no-build
+        --output ${{ env.ARTIFACT_DIR }}
+        -p:PackageVersion=1.0.${{ github.run_number }}      # <-- automatic semver
+
+    # 3️⃣ create / update a GitHub Release and attach the .nupkg
+    - name: Create GitHub Release
+      id: create_release
+      uses: softprops/action-gh-release@v2                  # stable, maintained
+      with:
+        tag_name: v1.0.${{ github.run_number }}
+        name: "Automated build ${{ github.run_number }}"
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}           # provided by GitHub
+                                                     # :contentReference[oaicite:1]{index=1}
+
+    - name: Upload package asset
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.create_release.outputs.tag_name }}
+        files: ${{ env.ARTIFACT_DIR }}/*.nupkg
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
