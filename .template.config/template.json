@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Michael Earls",
+  "classifications": [ "Console", "MQTT", "Pi Calculus" ],
+  "identity": "PiCalculus.Mqtt.Template",
+  "name": "Pi Calculus MQTT Template",
+  "shortName": "pi-mqtt",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "PiCalculusMqtt"
+}
+
