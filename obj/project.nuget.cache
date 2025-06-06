@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OZKWGgQzhLM=",
+  "dgSpecHash": "bj+5icSLexE=",
   "success": true,
-  "projectFilePath": "K:\\Development\\pi-calc-mqtt\\pi-calc-mqtt\\pi-calc-mqtt.csproj",
+  "projectFilePath": "C:\\Users\\michael.earls\\Source\\Repos\\PiCalc\\pi-calc-mqtt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\michael.earls\\.nuget\\packages\\mqttnet\\4.1.0.247\\mqttnet.4.1.0.247.nupkg.sha512"
   ],
@@ -11,7 +11,7 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "pi-calc-mqtt depends on MQTTnet (>= 4.1.0) but MQTTnet 4.1.0 was not found. MQTTnet 4.1.0.247 was resolved instead.",
+      "message": "PiCalc depends on MQTTnet (>= 4.1.0) but MQTTnet 4.1.0 was not found. MQTTnet 4.1.0.247 was resolved instead.",
       "libraryId": "MQTTnet",
       "targetGraphs": [
         "net8.0"
