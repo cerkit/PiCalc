@@ -1,5 +1,7 @@
 # Pi Calculus MQTT .NET Template
 
+See [the docs](https://PiCalc.net)
+
 This project provides a .NET 8 Console Application template inspired by the **Pi Calculus** model of concurrency. It uses MQTT for dynamic message-passing and models **channel mobility** through topic subscriptions.
 
 ## 📦 Template Features
